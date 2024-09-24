@@ -16,39 +16,39 @@ function getHumanChoice() {
   return input.toLowerCase();
 }
 
-function playRound(systemChoice, humanChoice, humanScore, systemScore) {
+function playRound(systemChoice, humanChoice) {
   if (systemChoice === humanChoice) {
-    console.log("");
+    return;
   } else if (
     (systemChoice === "paper" && humanChoice === "scissors") ||
     (systemChoice === "scissors" && humanChoice === "rock") ||
     (systemChoice === "rock" && humanChoice === "paper")
   ) {
-    humanScore += 1;
+    return "human";
   } else {
-    systemScore += 1;
+    return "system";
   }
-  console.log("System : ",systemChoice, " You : ",humanChoice);
-  console.log("System Score: ",systemScore," Your Score: " ,humanScore);
-  return {systemScore,humanScore}
 }
 
-const main = () => {
-  let humanScore = 0;
-  let systemScore = 0;
-
-  for (let i = 0; i < 5; i++) {
-    const systemChoice = getRandom();
-    const humanChoice = getHumanChoice();
-    output = playRound(systemChoice, humanChoice, humanScore, systemScore);
+let humanScore = 0;
+let systemScore = 0;
+for (let i = 0; i < 5; i++) {
+  const systemChoice = getRandom();
+  const humanChoice = getHumanChoice();
+  console.log("System : ", systemChoice, " You : ", humanChoice);
+  output = playRound(systemChoice, humanChoice);
+  if (output === "human") {
+    humanScore++;
+  } else if (output === "system") {
+    systemScore++;
   }
-    if (output.humanScore === output.systemScore) {
-    return "Equal Points!";
-  } else if (output.humanScore > output.systemScore) {
-    return "You win!";
-  } else {
-    return "System Win!";
-  }
-};
+  console.log("System Score: ", systemScore, " Your Score: ", humanScore);
+}
 
-console.log(main())
+if (humanScore > systemScore) {
+  console.log("YOU WIN!");
+} else if (humanScore === systemScore) {
+  console.log("MATCH DRAW");
+} else {
+  console.log("SYSTEM WIN!");
+}
