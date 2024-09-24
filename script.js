@@ -30,25 +30,29 @@ function playRound(systemChoice, humanChoice) {
   }
 }
 
-let humanScore = 0;
-let systemScore = 0;
-for (let i = 0; i < 5; i++) {
-  const systemChoice = getRandom();
-  const humanChoice = getHumanChoice();
-  console.log("System : ", systemChoice, " You : ", humanChoice);
-  output = playRound(systemChoice, humanChoice);
-  if (output === "human") {
-    humanScore++;
-  } else if (output === "system") {
-    systemScore++;
+const main = () => {
+  let humanScore = 0;
+  let systemScore = 0;
+  for (let i = 0; i < 5; i++) {
+    const systemChoice = getRandom();
+    const humanChoice = getHumanChoice();
+    console.log("System : ", systemChoice, " You : ", humanChoice);
+    output = playRound(systemChoice, humanChoice);
+    if (output === "human") {
+      humanScore++;
+    } else if (output === "system") {
+      systemScore++;
+    }
+    console.log("System Score: ", systemScore, " Your Score: ", humanScore);
   }
-  console.log("System Score: ", systemScore, " Your Score: ", humanScore);
-}
 
-if (humanScore > systemScore) {
-  console.log("YOU WIN!");
-} else if (humanScore === systemScore) {
-  console.log("MATCH DRAW");
-} else {
-  console.log("SYSTEM WIN!");
-}
+  if (humanScore > systemScore) {
+    console.log("YOU WIN!");
+  } else if (humanScore === systemScore) {
+    console.log("MATCH DRAW");
+  } else {
+    console.log("SYSTEM WIN!");
+  }
+};
+
+main()
