@@ -45,6 +45,7 @@ function resetGame() {
   console.log("Game reset");
 }
 
+
 let humanScore = 0;
 let systemScore = 0;
 const buttons = document.querySelectorAll(".button");
