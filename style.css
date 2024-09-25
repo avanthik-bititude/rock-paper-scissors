@@ -1,0 +1,79 @@
+body {
+  background-color: #e0dddd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.header {
+  font-family: Georgia;
+  background-color: #4CAF50;
+  color: white;
+  width: 800px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.hero {
+  display: flex;
+  gap: 30px;
+}
+
+.button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  border: 3px solid rgb(133, 133, 133);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+.button:hover {
+  border: 3px solid rgb(94, 91, 91);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+}
+
+.button img {
+  width: 200px;
+  height: auto;
+}
+
+.result {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.choice {
+  display: flex;
+  gap: 100px;
+}
+
+.choice h1 {
+  margin: 0;
+}
+
+.score {
+  display: flex;
+  gap: 200px;
+}
+
+span {
+  font-weight: bold;
+  color: #4CAF50;
+}
+
+#reset-button{
+  background-color: #fff; 
+  border: 2px solid #4CAF50; 
+  border-radius: 10px; 
+  padding: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  cursor: pointer; 
+  transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s; 
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+}
+
+
