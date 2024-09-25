@@ -15,6 +15,7 @@ function getHumanChoice(button) {
   return button.id;
 }
 
+
 function playRound(button) {
   const humanChoice = getHumanChoice(button);
   const systemChoice = getRandom();
@@ -71,3 +72,4 @@ buttons.forEach((button) => {
 });
 
 document.getElementById("reset-button").addEventListener("click", resetGame);
+
