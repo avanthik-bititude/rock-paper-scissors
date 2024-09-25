@@ -15,7 +15,6 @@ function getHumanChoice(button) {
   return button.id;
 }
 
-
 function playRound(button) {
   const humanChoice = getHumanChoice(button);
   const systemChoice = getRandom();
@@ -46,10 +45,10 @@ function resetGame() {
   console.log("Game reset");
 }
 
-
 let humanScore = 0;
 let systemScore = 0;
 const buttons = document.querySelectorAll(".button");
+
 buttons.forEach((button) => {
   button.addEventListener("click", function () {
     const result = playRound(button);
@@ -58,18 +57,23 @@ buttons.forEach((button) => {
     } else if (result === "system") {
       systemScore++;
     }
-    console.log("System Score:", systemScore, "Your Score:", humanScore);
+
     document.getElementById("score-human").innerHTML = humanScore;
     document.getElementById("score-system").innerHTML = systemScore;
-    if (humanScore >= 5) {
-      alert("Yahh! YOU WIN!");
-      resetGame();
-    } else if (systemScore >= 5) {
-      alert("oops! SYSTEM WINS");
-      resetGame();
+
+    if (humanScore === 5) {
+      setTimeout(() => {
+        alert("Yahh! YOU WIN!");
+        resetGame();
+      }, 100);
+    } else if (systemScore === 5) {
+      setTimeout(() => {
+        alert("Oops! SYSTEM WINS");
+        resetGame();
+      }, 100);
     }
+    console.log("System Score:", systemScore, "Your Score:", humanScore);
   });
 });
 
 document.getElementById("reset-button").addEventListener("click", resetGame);
-
