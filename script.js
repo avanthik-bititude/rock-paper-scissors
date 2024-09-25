@@ -1,7 +1,7 @@
 function getRandom() {
   const max = 3;
   const min = 1;
-  const random = Math.floor(Math.random() * max - min + 1) + min;
+  const random = Math.floor(Math.random() * (max - min + 1)) + min;
   if (random === 1) {
     return "rock";
   } else if (random === 2) {
@@ -11,44 +11,62 @@ function getRandom() {
   }
 }
 
-function getHumanChoice() {
-  const input = prompt("Enter you input : ");
-  return input.toLowerCase();
+function getHumanChoice(button) {
+  return button.id;
 }
 
-function playRound(systemChoice, humanChoice, humanScore, systemScore) {
+function playRound(button) {
+  const humanChoice = getHumanChoice(button);
+  const systemChoice = getRandom();
+  console.log("System Choice:", systemChoice, "Your choice:", humanChoice);
+  document.getElementById("choice-human").innerHTML = humanChoice.toUpperCase();
+  document.getElementById("choice-system").innerHTML =
+    systemChoice.toUpperCase();
   if (systemChoice === humanChoice) {
-    console.log("");
+    return "tie";
   } else if (
     (systemChoice === "paper" && humanChoice === "scissors") ||
     (systemChoice === "scissors" && humanChoice === "rock") ||
     (systemChoice === "rock" && humanChoice === "paper")
   ) {
-    humanScore += 1;
+    return "human";
   } else {
-    systemScore += 1;
+    return "system";
   }
-  console.log("System : ",systemChoice, " You : ",humanChoice);
-  console.log("System Score: ",systemScore," Your Score: " ,humanScore);
-  return {systemScore,humanScore}
 }
 
-const main = () => {
-  let humanScore = 0;
-  let systemScore = 0;
+function resetGame() {
+  humanScore = 0;
+  systemScore = 0;
+  document.getElementById("choice-human").innerHTML = "Null";
+  document.getElementById("choice-system").innerHTML = "Null";
+  document.getElementById("score-human").innerHTML = humanScore;
+  document.getElementById("score-system").innerHTML = systemScore;
+  console.log("Game reset");
+}
 
-  for (let i = 0; i < 5; i++) {
-    const systemChoice = getRandom();
-    const humanChoice = getHumanChoice();
-    output = playRound(systemChoice, humanChoice, humanScore, systemScore);
-  }
-    if (output.humanScore === output.systemScore) {
-    return "Equal Points!";
-  } else if (output.humanScore > output.systemScore) {
-    return "You win!";
-  } else {
-    return "System Win!";
-  }
-};
+let humanScore = 0;
+let systemScore = 0;
+const buttons = document.querySelectorAll(".button");
+buttons.forEach((button) => {
+  button.addEventListener("click", function () {
+    const result = playRound(button);
+    if (result === "human") {
+      humanScore++;
+    } else if (result === "system") {
+      systemScore++;
+    }
+    console.log("System Score:", systemScore, "Your Score:", humanScore);
+    document.getElementById("score-human").innerHTML = humanScore;
+    document.getElementById("score-system").innerHTML = systemScore;
+    if (humanScore >= 5) {
+      alert("Yahh! YOU WIN!");
+      resetGame();
+    } else if (systemScore >= 5) {
+      alert("oops! SYSTEM WINS");
+      resetGame();
+    }
+  });
+});
 
-console.log(main())
+document.getElementById("reset-button").addEventListener("click", resetGame);

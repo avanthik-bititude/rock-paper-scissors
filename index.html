@@ -1,12 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1>ROCK - PAPER - SCISSORS</h1>
+    </div>
+    <div class="hero">
+      <button id="rock" class="button">
+        <img src="./images//rock.webp" alt="rock" />
+      </button>
+      <button id="paper" class="button">
+        <img src="./images//paper.webp" alt="paper" />
+      </button>
+      <button id="scissors" class="button">
+        <img src="./images/scissors.webp" alt="scissors" />
+      </button>
+    </div>
+    <div class="result">
+      <div class="choice">
+        <h1>YOU: <span id="choice-human">Null</span></h1>
+        <h1>SYSTEM: <span id="choice-system">Null</span></h1>
+      </div>
+      <div class="score">
+        <h1>YOU: <span id="score-human">0</span></h1>
+        <h1>SYSTEM: <span id="score-system">0</span></h1>
+      </div>
+    </div>  
+    <div class="reset">
+      <button id="reset-button" onclick="resetGame">RESET</button>
+    </div>  
     <script src="script.js"></script>
-</head>
-<body>
-</body>
+  </body>
 </html>
