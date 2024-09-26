@@ -65,12 +65,12 @@ buttons.forEach((button) => {
       setTimeout(() => {
         alert("Yahh! YOU WIN!");
         resetGame();
-      }, 700);
+      }, 500);
     } else if (systemScore === 5) {
       setTimeout(() => {
         alert("Oops! SYSTEM WINS");
         resetGame();
-      }, 700);
+      }, 500);
     }
     console.log("System Score:", systemScore, "Your Score:", humanScore);
   });
